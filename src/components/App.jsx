@@ -19,7 +19,7 @@ export class App extends Component {
     totalPages: 0,
   };
 
-  async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(_, prevState) {
     if (
       prevState.searchQuery !== this.state.searchQuery ||
       prevState.page !== this.state.page
