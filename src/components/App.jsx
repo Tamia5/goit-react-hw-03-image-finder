@@ -18,12 +18,10 @@ export class App extends Component {
     loadMore: false,
     totalPages: 0,
   };
-
   async componentDidUpdate(_, prevState) {
-    if (
-      prevState.searchQuery !== this.state.searchQuery ||
-      prevState.page !== this.state.page
-    ) {
+    const { searchQuery, page } = this.state;
+
+    if (prevState.searchQuery !== searchQuery || prevState.page !== page) {
       this.addImages();
     }
   }
@@ -51,6 +49,7 @@ export class App extends Component {
       }));
     } catch (error) {
       this.setState({ error: 'Something went wrong!' });
+      throw error;
     } finally {
       this.setState({ isLoading: false });
     }

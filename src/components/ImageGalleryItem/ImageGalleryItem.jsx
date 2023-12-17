@@ -8,11 +8,9 @@ export class ImageGalleryItem extends Component {
   };
 
   handleImageClick = () => {
-    this.setState({ isModalOpen: true });
-  };
-
-  handleCloseModal = () => {
-    this.setState({ isModalOpen: false });
+    this.setState(prevState => ({
+      isModalOpen: !prevState.isModalOpen,
+    }));
   };
 
   render() {
@@ -27,7 +25,7 @@ export class ImageGalleryItem extends Component {
             imageUrl={largeImageURL}
             tags={tags}
             isOpen={isModalOpen}
-            onClose={this.handleCloseModal}
+            onClose={this.handleImageClick}
           />
         )}
       </GalletyItem>
